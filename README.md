@@ -1,4 +1,4 @@
-# Software-calculators.
+# Software-calculator.
 ##Advanced Software calculator using PHP Symfony (CLI the Rest APIs)- implementing OOP and solid principles
 State-of-the-art software calculator.  developing a calculator for a company that is working on developing a mega operating system for personal computers in order to
 include it in their next operator system release.
