@@ -1,0 +1,7 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+#hello:
+#    path: /hi
+#    controller: App\Controller\RESTAPI::index
