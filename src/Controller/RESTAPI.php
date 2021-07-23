@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 use App\Entity\EquationLog;
+use App\Helper\CalculatorHelper;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,6 +21,12 @@ class RESTAPI  extends AbstractController
      */
     function index (Request $request,LoggerInterface $logger): JsonResponse
     {
+        $input = $request->request->get('input', 'No value');
+
+        $cal = new CalculatorHelper();
+//        $cal->startCLILogger();
+      $result =   $cal->handleInput($input);
+      return new JsonResponse($result);
 
 //        $logger->info('I just got the logger');
 //        $logger->error('An error occurred');
@@ -29,7 +36,6 @@ class RESTAPI  extends AbstractController
 //            'cause' => 'in_hurry',
 //        ]);
 //        $routeName = $request->attributes->get('_route');
-        $input = $request->request->get('input', 'No value');
 //        $input = urlencode("1+2+3");
 //        $encoded = urldecode($input);
         $logger->info("Calculate input: $input");
@@ -46,7 +52,7 @@ class RESTAPI  extends AbstractController
 //        $entityManager->flush();
         return new JsonResponse(
             [
-                'Name' => 'omer',
+//                'Name' => 'omer',
                 'input' => $input,
 //                'encoded' => $encoded,
                 'equation' => $equation->getEquation(),
