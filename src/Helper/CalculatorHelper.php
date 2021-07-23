@@ -5,15 +5,16 @@ namespace App\Helper;
 
 
 use PhpParser\Builder\Class_;
+use Psr\Log\LoggerInterface;
 
 class CalculatorHelper
 {
 
     private Logger $logger;
 
-    public function __construct()
+    public function __construct(LoggerInterface $logger)
     {
-        $this->logger = new Logger();
+        $this->logger = new Logger($logger);
     }
 
     function startCLILogger(){

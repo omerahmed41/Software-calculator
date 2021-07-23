@@ -22,13 +22,15 @@ class RESTAPI  extends AbstractController
     function index (Request $request,LoggerInterface $logger): JsonResponse
     {
         $input = $request->request->get('input', 'No value');
+        $logger->info("Start Calculations for $input");
 
-        $cal = new CalculatorHelper();
+        $cal = new CalculatorHelper($logger);
 //        $cal->startCLILogger();
       $result =   $cal->handleInput($input);
-      return new JsonResponse($result);
+        $logger->info("$input result is: ". json_encode($result));
 
-//        $logger->info('I just got the logger');
+        return new JsonResponse($result);
+
 //        $logger->error('An error occurred');
 //
 //        $logger->critical('I left the oven on!', [
