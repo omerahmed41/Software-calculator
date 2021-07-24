@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ff857782-e8c5-4fa6-8f5c-ac87cd31c196" name="Default Changelist" comment="- inject Looger interface to CalculatorHelper.php and Logger.php.">
-      <change afterPath="$PROJECT_DIR$/config/config.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/BaseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/my_projet.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/my_projet.iml" afterDir="false" />
+    <list default="true" id="ff857782-e8c5-4fa6-8f5c-ac87cd31c196" name="Default Changelist" comment="- added UnitTests for Math Class.&#10;- group the routes and two classes">
+      <change afterPath="$PROJECT_DIR$/tests/CalculatorHelperTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/doctrine.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210722123924.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20210722123924.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/RESTAPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RESTAPI.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/EquationLog.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/EquationLog.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Helper/CalculatorHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helper/CalculatorHelper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Helper/Logger.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helper/Logger.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/EquationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/EquationRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/MathTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MathTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,7 +169,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Controller" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -188,11 +179,28 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\software calculater\Software-calculator\src\Controller" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\software calculater\Software-calculator\src\ Commands" />
+    </key>
+  </component>
+  <component name="RunManager" selected="PHPUnit.MathTest.testAdd">
+    <configuration name="MathTest.testAdd" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\MathTest" file="$PROJECT_DIR$/tests/MathTest.php" method="testAdd" scope="Method" />
+      <method v="2" />
+    </configuration>
     <configuration name="phpunit.xml.dist" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHPUnit.MathTest.testAdd" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -206,7 +214,7 @@
       <workItem from="1626945352112" duration="7377000" />
       <workItem from="1626955124386" duration="7944000" />
       <workItem from="1627021452393" duration="621000" />
-      <workItem from="1627058597437" duration="16384000" />
+      <workItem from="1627058597437" duration="41557000" />
     </task>
     <task id="LOCAL-00001" summary="- project init &#10;- configures routes and annotations&#10;- configured logs &#10;- Created new Entities &#10;- create migrations &#10;- configured SQL database">
       <created>1627059204262</created>
@@ -229,7 +237,49 @@
       <option name="project" value="LOCAL" />
       <updated>1627065423294</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="- Created new class BaseController.php&#10;- Added new bundle StofDoctrineExtensionsBundle&#10;- injected $entityManager to CalculatorHelper.php&#10;- Added  TimestampableEntity and SoftDeleteableEntity">
+      <created>1627098398183</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1627098398183</updated>
+    </task>
+    <task id="LOCAL-00005" summary="- updated migrations files">
+      <created>1627098440416</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1627098440416</updated>
+    </task>
+    <task id="LOCAL-00006" summary="- Save operations to DB">
+      <created>1627101651030</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1627101651030</updated>
+    </task>
+    <task id="LOCAL-00007" summary="- fixed time formatting &#10;- Added public function getTop on EquationRepository&#10;- Added timestamp to OperationsLog&#10;- Added  public function distinct to OprationsLogRepository&#10;- Added routes getTopEquations, operationSummary">
+      <created>1627107278690</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1627107278690</updated>
+    </task>
+    <task id="LOCAL-00008" summary="- added migration file">
+      <created>1627107312103</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1627107312103</updated>
+    </task>
+    <task id="LOCAL-00009" summary="- added UnitTests for Math Class.&#10;- group the routes and two classes">
+      <created>1627117500852</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1627117500853</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,6 +301,12 @@
     <MESSAGE value="- project init &#10;- configures routes and annotations&#10;- configured logs &#10;- Created new Entities &#10;- create migrations &#10;- configured SQL database" />
     <MESSAGE value="- Created new class CalculatorHelper.php&#10;- Created new class Logger.php&#10;- Created new class Math.php" />
     <MESSAGE value="- inject Looger interface to CalculatorHelper.php and Logger.php." />
-    <option name="LAST_COMMIT_MESSAGE" value="- inject Looger interface to CalculatorHelper.php and Logger.php." />
+    <MESSAGE value="- Created new class BaseController.php&#10;- Added new bundle StofDoctrineExtensionsBundle&#10;- injected $entityManager to CalculatorHelper.php&#10;- Added  TimestampableEntity and SoftDeleteableEntity" />
+    <MESSAGE value="- updated migrations files" />
+    <MESSAGE value="- Save operations to DB" />
+    <MESSAGE value="- fixed time formatting &#10;- Added public function getTop on EquationRepository&#10;- Added timestamp to OperationsLog&#10;- Added  public function distinct to OprationsLogRepository&#10;- Added routes getTopEquations, operationSummary" />
+    <MESSAGE value="- added migration file" />
+    <MESSAGE value="- added UnitTests for Math Class.&#10;- group the routes and two classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="- added UnitTests for Math Class.&#10;- group the routes and two classes" />
   </component>
 </project>
