@@ -41,8 +41,5 @@ class Logger
 
     }
 
-    private function systemLog ($message ){
-
-}
 
 }

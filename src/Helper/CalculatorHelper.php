@@ -4,17 +4,19 @@
 namespace App\Helper;
 
 
-use PhpParser\Builder\Class_;
+use App\Entity\EquationLog;
 use Psr\Log\LoggerInterface;
 
 class CalculatorHelper
 {
 
     private Logger $logger;
+    private $em;
 
-    public function __construct(LoggerInterface $logger)
+    public function __construct(LoggerInterface $logger, $em)
     {
         $this->logger = new Logger($logger);
+        $this->em = $em;
     }
 
     function startCLILogger(){
@@ -48,7 +50,20 @@ class CalculatorHelper
         }
 
 
-      return  $this->runCalculation($parsedInput['message']);
+        $result = $this->runCalculation($parsedInput['message']);
+
+        $entityManager = $this->em;
+
+        $equation = new EquationLog();
+        $equation->setEquation($string);
+        $entityManager->persist($equation);
+
+
+//        $equation->addOperation("+");
+
+        $entityManager->flush();
+
+      return  $result;
 
     }
 

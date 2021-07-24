@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Entity;
-
+use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use App\Repository\EquationRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -12,6 +14,10 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class EquationLog
 {
+
+    use TimestampableEntity;
+    use SoftDeleteableEntity;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -80,4 +86,13 @@ class EquationLog
 
         return $this;
     }
+
+    /**
+     * @return string|null
+     */
+    public function __toString()
+    {
+        return $this->getEquation();
+    }
+
 }

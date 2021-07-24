@@ -10,56 +10,55 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
-class RESTAPI  extends AbstractController
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+
+class RESTAPI extends BaseController
 {
 
+
     /**
-     * @Route("/calculate", name="calculate",  methods={"POST"})
+     * @Route("/rest/v1/calculate", name="calculate",  methods={"POST"})
      * @param Request $request
      * @param LoggerInterface $logger
      * @return JsonResponse
      */
-    function index (Request $request,LoggerInterface $logger): JsonResponse
+    function index(Request $request, LoggerInterface $logger): JsonResponse
     {
         $input = $request->request->get('input', 'No value');
         $logger->info("Start Calculations for $input");
 
-        $cal = new CalculatorHelper($logger);
+        $em = $this->getDoctrine()->getManager();
+        $cal = new CalculatorHelper($logger,$em);
 //        $cal->startCLILogger();
-      $result =   $cal->handleInput($input);
-        $logger->info("$input result is: ". json_encode($result));
+        $result = $cal->handleInput($input);
+
+        $logger->info("$input result is: " . json_encode($result));
 
         return new JsonResponse($result);
 
-//        $logger->error('An error occurred');
-//
-//        $logger->critical('I left the oven on!', [
-//            // include extra "context" info in your logs
-//            'cause' => 'in_hurry',
-//        ]);
-//        $routeName = $request->attributes->get('_route');
-//        $input = urlencode("1+2+3");
-//        $encoded = urldecode($input);
-        $logger->info("Calculate input: $input");
-        $entityManager = $this->getDoctrine()->getManager();
 
-        $equation = new EquationLog();
-        $equation->setEquation($input);
-        $entityManager->persist($equation);
+    }
+
+    /**
+     * @Route ("/rest/v1/reports/getEquations")
+     * @param Request $request
+     * @return JsonResponse
+     */
+    function getEquations(Request $request): JsonResponse
+    {
+        $frequency = $request->request->get('frequency', 'monthly');
 
 
-//        $equation->addOperation("+");
+        $em = $this->getDoctrine()->getManager();
+        $result = $em->getRepository(EquationLog::class)->findAll();
 
-        // actually executes the queries (i.e. the INSERT query)
-//        $entityManager->flush();
-        return new JsonResponse(
-            [
-//                'Name' => 'omer',
-                'input' => $input,
-//                'encoded' => $encoded,
-                'equation' => $equation->getEquation(),
+        $serialized = $this->serializer->serialize($result, "json");
 
-            ]
-        );
+        return JsonResponse::fromJsonString($serialized);
     }
 }
