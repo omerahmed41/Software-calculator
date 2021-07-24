@@ -51,7 +51,14 @@ class CalculatorHelper
         }
 
 
-        $res = $this->runCalculation($parsedInput['message'])['message'];
+        $calculationResult = $this->runCalculation($parsedInput['message']);
+        if (!$calculationResult['state']) {
+            $this->logger->print_message($calculationResult['message'], 'error');
+            return $this->returnResponse(false, $calculationResult['message']);
+
+        }
+        $res =$calculationResult['message'];
+
         [$result,$baseOperations,$functions] = $res;
         $entityManager = $this->em;
 
@@ -160,7 +167,7 @@ class CalculatorHelper
         $m = new Math;
         $functions = [];
         foreach ($nunOperations as $key => $nunOperation) {
-            preg_match("/(round|omer|factorial)/", $nunOperation, $funName, PREG_OFFSET_CAPTURE);
+            preg_match("/$m->allowedFunctions/", $nunOperation, $funName, PREG_OFFSET_CAPTURE);
             if (!$funName) {
                 continue;
             }
@@ -233,6 +240,7 @@ class CalculatorHelper
 
         $nunOperations = array_filter(preg_split("/[$optPattern]/", $string));
 
+
         $operations = array_filter(preg_split("/[^$optPattern]/", $string));
         //    $nums = array_filter(preg_split("/[^0-9]/",$string));
         $this->logger->print_message($nunOperations);
@@ -244,10 +252,13 @@ class CalculatorHelper
     function hasUnallowableChar($string): bool
     {
 
+        $m = new Math;
+
+
         $number = '(?:\d+(?:[,.]\d+)?|pi|π)'; // What is a number
 //    $functions = '(?:sinh?|cosh?|tanh?|abs|acosh?|asinh?|atanh?|exp|log10|deg2rad|rad2deg|sqrt|ceil|floor|round)'
 //        .'\s*\((?1)+\)|\((?1)+\))(?:'; // Allowed PHP functions
-        $functions = '(round|omer|factorial)'
+        $functions = "$m->allowedFunctions"
             . '\s*\((?1)+\)|\((?1)+\))(?:'; // Allowed local functions
         $operators = '[+\/*\^%-]'; // Allowed math operators
 

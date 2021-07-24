@@ -44,7 +44,7 @@ class OprationsLogRepository extends ServiceEntityRepository
         return $this->createQueryBuilder("o")
             ->select("COUNT(o.operationType) as count" )
             ->addSelect('o.operationType as operation' )
-            ->addSelect('o.createdAt as createdAt' )
+//            ->addSelect('o.createdAt as createdAt' )
             ->andWhere('o.createdAt >= :period')
             ->setParameter('period',$date)
             ->groupBy("o.operationType")
