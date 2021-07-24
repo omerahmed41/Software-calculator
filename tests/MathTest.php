@@ -26,6 +26,23 @@ class MathTest extends TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
+    public function testArgumentsCountOpt()
+    {
+        $m = new Math;
+
+        $opt = "omer";
+        $result = $m->calc($opt, [1 , 4,3]);
+
+        // todo: add translations
+        $expectedResult=   [
+        'state' => false,
+        'message' => "wrong argument for $opt"
+    ];
+
+        // assert that your calculator added the numbers correctly!
+        $this->assertEquals($expectedResult, $result);
+    }
+
     public function testAdd()
     {
         $m = new Math;
