@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 use App\Entity\EquationLog;
+use App\Entity\OperationsLog;
 use App\Helper\CalculatorHelper;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -45,18 +46,36 @@ class RESTAPI extends BaseController
     }
 
     /**
-     * @Route ("/rest/v1/reports/getEquations")
+     * @Route ("/rest/v1/reports/getTopEquations", methods={"GET"})
      * @param Request $request
      * @return JsonResponse
      */
-    function getEquations(Request $request): JsonResponse
+    function getTopEquations(Request $request): JsonResponse
     {
-        $frequency = $request->request->get('frequency', 'monthly');
+        $value = $request->get('top', '10');
+
+        $em = $this->getDoctrine()->getManager();
+        $result = $em->getRepository(EquationLog::class)->getTop($value);
+
+        $serialized = $this->serializer->serialize($result, "json");
+
+        return JsonResponse::fromJsonString($serialized);
+    }
+
+    /**
+     * @Route ("/rest/v1/reports/operationSummary", methods={"GET"})
+     * @param Request $request
+     * @return JsonResponse
+     */
+    function operationSummary(Request $request): JsonResponse
+    {
+        $frequency = $request->get('frequency', 'week');
 
 
         $em = $this->getDoctrine()->getManager();
-        $result = $em->getRepository(EquationLog::class)->findAll();
+        $result = $em->getRepository(OperationsLog::class)->distinct($frequency);
 
+//        return new JsonResponse($result);
         $serialized = $this->serializer->serialize($result, "json");
 
         return JsonResponse::fromJsonString($serialized);

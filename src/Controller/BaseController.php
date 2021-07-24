@@ -19,7 +19,7 @@ class BaseController extends AbstractController
     public function __construct() {
         $encoders = [new XmlEncoder(), new JsonEncoder()];
         $normalizers = [
-            new DateTimeNormalizer([DateTimeNormalizer::FORMAT_KEY => "yy/mm/dd"]),
+            new DateTimeNormalizer([DateTimeNormalizer::FORMAT_KEY => "y/m/d"]),
             new ObjectNormalizer()
         ];
 

@@ -36,15 +36,22 @@ class OprationsLogRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function findOneBySomeField($value): ?OprationsLog
+
+    public function distinct($period= "week")
     {
-        return $this->createQueryBuilder('o')
-            ->andWhere('o.exampleField = :val')
-            ->setParameter('val', $value)
+
+        $date = strtotime("-1 $period");
+        return $this->createQueryBuilder("o")
+            ->select("COUNT(o.operationType) as count" )
+            ->addSelect('o.operationType as operation' )
+            ->addSelect('o.createdAt as createdAt' )
+            ->andWhere('o.createdAt >= :period')
+            ->setParameter('period',$date)
+            ->groupBy("o.operationType")
+//            ->setMaxResults(10)
+            ->orderBy("COUNT(o.operationType)", "Desc")
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getResult();
     }
-    */
+
 }

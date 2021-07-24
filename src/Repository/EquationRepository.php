@@ -18,23 +18,15 @@ class EquationRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, EquationLog::class);
     }
-
-    // /**
-    //  * @return Equation[] Returns an array of Equation objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function getTop($value = 2)
     {
         return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('e.id', 'ASC')
-            ->setMaxResults(10)
+            ->orderBy('e.id', 'Desc')
+            ->setMaxResults($value)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Equation
