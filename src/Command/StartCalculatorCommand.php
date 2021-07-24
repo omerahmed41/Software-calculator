@@ -14,13 +14,10 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-#[AsCommand(
-    name: 'StartCalculator',
-    description: 'A basic intro to the calculator',
-)]
+
 class StartCalculatorCommand extends Command
 {
-
+    protected static $defaultName = 'StartCalculator';
     private LoggerInterface $logger;
     private EntityManagerInterface $entityManager;
 

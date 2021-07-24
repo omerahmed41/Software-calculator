@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ff857782-e8c5-4fa6-8f5c-ac87cd31c196" name="Default Changelist" comment="- added UnitTests for Math Class.&#10;- group the routes and two classes">
-      <change afterPath="$PROJECT_DIR$/tests/CalculatorHelperTest.php" afterDir="false" />
+    <list default="true" id="ff857782-e8c5-4fa6-8f5c-ac87cd31c196" name="Default Changelist" comment="- Added New command StartCalculator">
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/RESTAPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RESTAPI.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Helper/CalculatorHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helper/CalculatorHelper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/MathTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MathTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Command/StartCalculatorCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Command/StartCalculatorCommand.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,7 +209,7 @@
       <workItem from="1626945352112" duration="7377000" />
       <workItem from="1626955124386" duration="7944000" />
       <workItem from="1627021452393" duration="621000" />
-      <workItem from="1627058597437" duration="41557000" />
+      <workItem from="1627058597437" duration="42269000" />
     </task>
     <task id="LOCAL-00001" summary="- project init &#10;- configures routes and annotations&#10;- configured logs &#10;- Created new Entities &#10;- create migrations &#10;- configured SQL database">
       <created>1627059204262</created>
@@ -279,7 +274,21 @@
       <option name="project" value="LOCAL" />
       <updated>1627117500853</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="- Added New command StartCalculator&#10;- Added testCase testArgumentsCountOpt">
+      <created>1627135480548</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1627135480548</updated>
+    </task>
+    <task id="LOCAL-00011" summary="- Added New command StartCalculator">
+      <created>1627135530991</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1627135530991</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,6 +316,8 @@
     <MESSAGE value="- fixed time formatting &#10;- Added public function getTop on EquationRepository&#10;- Added timestamp to OperationsLog&#10;- Added  public function distinct to OprationsLogRepository&#10;- Added routes getTopEquations, operationSummary" />
     <MESSAGE value="- added migration file" />
     <MESSAGE value="- added UnitTests for Math Class.&#10;- group the routes and two classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="- added UnitTests for Math Class.&#10;- group the routes and two classes" />
+    <MESSAGE value="- Added New command StartCalculator&#10;- Added testCase testArgumentsCountOpt" />
+    <MESSAGE value="- Added New command StartCalculator" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Added New command StartCalculator" />
   </component>
 </project>
