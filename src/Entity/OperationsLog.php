@@ -46,9 +46,9 @@ class OperationsLog
         return $this;
     }
 
-    public function getEquation(): ?EquationLog
+    public function getEquation(): ?string
     {
-        return $this->equation;
+        return $this->equation->getEquation();
     }
 
     public function setEquation(?EquationLog $equation): self
@@ -58,5 +58,11 @@ class OperationsLog
         return $this;
     }
 
-
+    /**
+     * @return string|null
+     */
+    public function __toString()
+    {
+        return $this->getOperationType();
+    }
 }

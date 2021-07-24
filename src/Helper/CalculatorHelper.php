@@ -5,6 +5,7 @@ namespace App\Helper;
 
 
 use App\Entity\EquationLog;
+use App\Entity\OperationsLog;
 use Psr\Log\LoggerInterface;
 
 class CalculatorHelper
@@ -50,27 +51,34 @@ class CalculatorHelper
         }
 
 
-        $result = $this->runCalculation($parsedInput['message']);
-
+        $res = $this->runCalculation($parsedInput['message'])['message'];
+        [$result,$baseOperations,$functions] = $res;
         $entityManager = $this->em;
 
         $equation = new EquationLog();
         $equation->setEquation($string);
         $entityManager->persist($equation);
 
+        $allOperations = array_merge($baseOperations,$functions);
+        foreach ($allOperations as $baseOperation){
+            $operation = new OperationsLog();
+            $operation->setOperationType($baseOperation);
+            $operation->setEquation($equation);
+            $entityManager->persist($operation);
 
-//        $equation->addOperation("+");
+        }
 
         $entityManager->flush();
 
-      return  $result;
+      return  $res;
 
     }
 
     function runCalculation($parsedInput): array
     {
 
-        [$nunOperations, $operations] = $parsedInput;
+        [$nunOperations, $baseOperations] = $parsedInput;
+
 
         $calculateFunctions = $this->calculateFunctions($nunOperations);
         if (!$calculateFunctions['state']) {
@@ -79,17 +87,19 @@ class CalculatorHelper
 
         }
 
+        $functions = $calculateFunctions['functions'];
         $nums = $calculateFunctions['result'];
 
-        $calculateOperations = $this->calculateOperations($nums, $operations);
+        $calculateOperations = $this->calculateOperations($nums, $baseOperations);
         if (!$calculateOperations['state']) {
             $this->logger->print_message($calculateOperations['message'], 'error');
             return $this->returnResponse(false, $calculateOperations['message']);
 
         }
         $result = $calculateOperations['result'];
+        $res = [$result,$baseOperations,$functions];
         $this->logger->print_message("Result: $result", 'success');
-        return  $this->returnResponse(true, $result);
+        return  $this->returnResponse(true, $res);
     }
 
     function calculateOperations($nums, $operations): array
@@ -148,13 +158,14 @@ class CalculatorHelper
     function calculateFunctions($nunOperations): array
     {
         $m = new Math;
-
+        $functions = [];
         foreach ($nunOperations as $key => $nunOperation) {
             preg_match("/(round|omer|factorial)/", $nunOperation, $funName, PREG_OFFSET_CAPTURE);
             if (!$funName) {
                 continue;
             }
 
+            array_push($functions,$funName[0][0]);
             $this->logger->print_message('funName: '. "\n".$funName[0][0]);
 
 
@@ -175,7 +186,8 @@ class CalculatorHelper
 
         return [
             'state' => true,
-            'result' => $nunOperations
+            'result' => $nunOperations,
+            'functions' => $functions,
         ];
 
     }
