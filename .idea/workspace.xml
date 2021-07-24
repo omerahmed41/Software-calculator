@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ff857782-e8c5-4fa6-8f5c-ac87cd31c196" name="Default Changelist" comment="-make the app compatible with php 7.4.">
-      <change afterPath="$PROJECT_DIR$/src/Controller/ReportController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/index.html.twig" afterDir="false" />
+    <list default="true" id="ff857782-e8c5-4fa6-8f5c-ac87cd31c196" name="Default Changelist" comment="- Created base.html.twig&#10;- Created index.html.twig&#10;- ReportController.php">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Helper/Math.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helper/Math.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +220,7 @@
       <workItem from="1626945352112" duration="7377000" />
       <workItem from="1626955124386" duration="7944000" />
       <workItem from="1627021452393" duration="621000" />
-      <workItem from="1627058597437" duration="48220000" />
+      <workItem from="1627058597437" duration="49166000" />
     </task>
     <task id="LOCAL-00001" summary="- project init &#10;- configures routes and annotations&#10;- configured logs &#10;- Created new Entities &#10;- create migrations &#10;- configured SQL database">
       <created>1627059204262</created>
@@ -308,7 +306,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627136248123</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="- Created base.html.twig&#10;- Created index.html.twig&#10;- ReportController.php">
+      <created>1627152191140</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1627152191141</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -339,6 +344,7 @@
     <MESSAGE value="- Added New command StartCalculator&#10;- Added testCase testArgumentsCountOpt" />
     <MESSAGE value="- Added New command StartCalculator" />
     <MESSAGE value="-make the app compatible with php 7.4." />
-    <option name="LAST_COMMIT_MESSAGE" value="-make the app compatible with php 7.4." />
+    <MESSAGE value="- Created base.html.twig&#10;- Created index.html.twig&#10;- ReportController.php" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Created base.html.twig&#10;- Created index.html.twig&#10;- ReportController.php" />
   </component>
 </project>

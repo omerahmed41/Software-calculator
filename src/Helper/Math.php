@@ -9,6 +9,10 @@ class  Math
 
     public string $allowedFunctions = "(round|omer|square|cubic|power|factorial)";
     public array $operationsMatrix = [
+        'round' => [
+            'arguments' => '2',
+            'equation' => 'return round("$augments[0].$augments[1]");',
+        ],
         '+' => [
             'arguments' => '2',
             'equation' => 'return $augments[0] + $augments[1];',
