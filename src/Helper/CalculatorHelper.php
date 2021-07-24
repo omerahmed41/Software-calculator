@@ -113,10 +113,14 @@ class CalculatorHelper
     {
         $m = new Math;
 
+        $operations = array_values($operations);
+        $nums = array_values($nums);
 
         // do * and / first
         foreach ($operations as $key => $opt) {
             if ($opt == '*' || $opt == "/") {
+                $key+=1;
+
                 $this->logger->print_message($nums[$key - 1]. $opt.  $nums[$key] ."= ");
 
                 $calc = $m->calc($opt, [$nums[$key - 1], $nums[$key]]);
@@ -128,7 +132,7 @@ class CalculatorHelper
                 $this->logger->print_message($result ."\n");
 
                 // array_shift($nums);
-                unset($operations[$key]);
+                unset($operations[$key-1]);
 
                 $nums[$key] = $result;
                 unset($nums[$key - 1]);
