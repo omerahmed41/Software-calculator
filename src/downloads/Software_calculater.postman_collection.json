@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "2978d7cf-5714-4192-94c5-b7c2f968ebc7",
+		"name": "Software_calculater",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/rest/v1/calculate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "input",
+							"value": "1+2-4*2/1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/rest/v1/calculate",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"rest",
+						"v1",
+						"calculate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reports/getEquations",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://www.calcuc.com/rest/v1/reports/getTopEquations?top=10",
+					"protocol": "http",
+					"host": [
+						"www",
+						"calcuc",
+						"com"
+					],
+					"path": [
+						"rest",
+						"v1",
+						"reports",
+						"getTopEquations"
+					],
+					"query": [
+						{
+							"key": "top",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reports/operationSummary",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "input",
+							"value": "1+3-4",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://www.calcuc.com/rest/v1/reports/operationSummary?frequency=week",
+					"protocol": "http",
+					"host": [
+						"www",
+						"calcuc",
+						"com"
+					],
+					"path": [
+						"rest",
+						"v1",
+						"reports",
+						"operationSummary"
+					],
+					"query": [
+						{
+							"key": "frequency",
+							"value": "week"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://www.calcuc.com/rest/v1/calculate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "input",
+							"value": "round(3,4)",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://www.calcuc.com/rest/v1/calculate",
+					"protocol": "http",
+					"host": [
+						"www",
+						"calcuc",
+						"com"
+					],
+					"path": [
+						"rest",
+						"v1",
+						"calculate"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

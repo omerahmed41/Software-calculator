@@ -16,7 +16,16 @@ been performed during that time period.
 6. The calculator will also be triggered via a web API.
 7. PHP Symfony , MYSQL, REDIS, Vue.js are Used
 
+## Getting start
 
+See the project dashboard :
+`http://www.calcuc.com  `
+Api documentation Guide: 
+`http://www.calcuc.com/Documentation/v1/API`
+Download Postman collection:
+`http://www.calcuc.com/Documentation/v1/download-postmanColloction`
+CLI Guide: 
+`http://www.calcuc.com/Documentation/v1/CLI`
 
 ## install and Setup
 Get the App up and running in 3 simple steps
@@ -86,6 +95,8 @@ DATABASE_URL="mysql://root:@localhost:3306/symfony"
 
 Start the server using the CLI type:
 `symfony server:start`
+
+
 
 
 ## iv. TODO

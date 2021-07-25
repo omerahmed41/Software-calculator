@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ff857782-e8c5-4fa6-8f5c-ac87cd31c196" name="Default Changelist" comment="-update ReadMe file">
+    <list default="true" id="ff857782-e8c5-4fa6-8f5c-ac87cd31c196" name="Default Changelist" comment="-update ReadMe and serverURL">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/BaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BaseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/DocumentationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DocumentationController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/API.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/API.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/getting_start.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/getting_start.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +226,7 @@
       <workItem from="1626945352112" duration="7377000" />
       <workItem from="1626955124386" duration="7944000" />
       <workItem from="1627021452393" duration="621000" />
-      <workItem from="1627058597437" duration="72900000" />
+      <workItem from="1627058597437" duration="75346000" />
     </task>
     <task id="LOCAL-00001" summary="- project init &#10;- configures routes and annotations&#10;- configured logs &#10;- Created new Entities &#10;- create migrations &#10;- configured SQL database">
       <created>1627059204262</created>
@@ -364,7 +368,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627219295746</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="-update ReadMe and serverURL">
+      <created>1627222065013</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1627222065013</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -411,6 +422,7 @@
     <MESSAGE value="- added steps array and save it in equation logs &#10;- save result to equationLogs&#10;- update the index.html &#10;- do migrations" />
     <MESSAGE value="- added documentations pages for getting_start.html.twig, Cli, Api and install &#10;- print the steps &#10;-" />
     <MESSAGE value="-update ReadMe file" />
-    <option name="LAST_COMMIT_MESSAGE" value="-update ReadMe file" />
+    <MESSAGE value="-update ReadMe and serverURL" />
+    <option name="LAST_COMMIT_MESSAGE" value="-update ReadMe and serverURL" />
   </component>
 </project>
