@@ -13,16 +13,16 @@
 <body>
 
 <main>
-    <p> An open source calculator, you can see our <a target="_blank" href="/dashboard">dashboard </a> ,
+    <p> An open source calculator, you can see our <a  href="/dashboard">dashboard </a> ,
         <a target="_blank" href="/Documentation/v1/">Getting start guide </a> ,
         <a target="_blank" href="/Documentation/v1/API">API guide </a>,
-        <a target="_blank" href="/Documentation/v1/CLI">CLI guide </a> ,
+       you can interact with the calculator using Windows|linux|MacOS CLI <a target="_blank" href="/Documentation/v1/CLI">CLI guide </a> ,
         or download the source code from  <a target="_blank" href="https://github.com/omerahmed41/Software-calculator.git">git hub</a> </p>
 <section id="home">
 <h2>CLI - Command Line Interface Simulation- Software Calculator</h2>
 
     {% if state %}
-        <p>Started Calculating: finput </p>
+        <p>Started Calculating: {{ finput }} </p>
       {% for step in  result[1] %}
         <p>  {{step}}.</p>
       {% endfor %}
@@ -30,7 +30,7 @@
         {% elseif message and finput %}
         {{ message }}
     {% endif %}
-<p><span>Enter the Equation then press <kbd>Enter</kbd> </span></p>
+<p><span>Enter an Equation example 1+2*3/4+round(3.4) then press <kbd>Enter</kbd> </span></p>
 </section>
 
 <form action="#" method="post">

@@ -71,6 +71,5 @@ class DocumentationController  extends BaseController
         $file = new File($projectRoot.'/src/downloads/Software_calculater.postman_collection.json');
 
         return $this->file($file);
-        return $response;
     }
 }
