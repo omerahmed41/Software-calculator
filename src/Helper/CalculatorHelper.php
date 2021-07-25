@@ -78,6 +78,7 @@ class CalculatorHelper
         }
 
         $entityManager->flush();
+        $this->logger->print_message($steps, 'success');
 
       return  $res;
 

@@ -25,13 +25,14 @@ class ReportController extends BaseController
      */
     function index(Request $request)
     {
+        $frequency = $request->get('frequency', 'week');
 
 
         $em = $this->getDoctrine()->getManager();
         $equations = $em->getRepository(EquationLog::class)->getTop(8);
 
         $em = $this->getDoctrine()->getManager();
-        $operations = $em->getRepository(OperationsLog::class)->distinct();
+        $operations = $em->getRepository(OperationsLog::class)->distinct($frequency);
 
 //        return new JsonResponse($result);
 //        $serialized = $this->serializer->serialize($result, "json");

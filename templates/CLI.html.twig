@@ -1,0 +1,104 @@
+{% extends "base.html.twig" %}
+{% block body %}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>CLI - The Command Line Interface Guide</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/Documentation/v1/">Getting Start</a></li>
+                            <li class="breadcrumb-item"><a href="/Documentation/v1/API">API</a></li>
+                            <li class="breadcrumb-item"><a href="/Documentation/v1/CLI">CLI</a></li>
+                            <li class="breadcrumb-item active"><a href="/Documentation/v1/Install">Install</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-12" id="accordion">
+                    <div class="card card-primary card-outline">
+                        <a class="d-block w-100" data-toggle="collapse" href="#collapseOne">
+                            <div class="card-header">
+                                <h4 class="card-title w-100">
+                                    Use the Command line
+                                </h4>
+                            </div>
+                        </a>
+                        <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                            <div class="card-body">
+                               you can interact with the Calculator using the Command line interface
+                                <p>every symfony command start with </p>
+                                <p><code>php bin/console</code></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-primary card-outline">
+                        <a class="d-block w-100" data-toggle="collapse" href="#collapseTwo">
+                            <div class="card-header">
+                                <h4 class="card-title w-100">
+                                    i. Calculate Equation (example 1+2*5)
+
+                                </h4>
+                            </div>
+                        </a>
+                        <div id="collapseTwo" class="collapse show" data-parent="#accordion">
+                            <div class="card-body">
+
+                                <p>Command: after successfully installing and configuring the project</p>
+
+                                <P>In the terminal head to project Dir then type </p>
+                                <P><code>php bin/console StartCalculator </code></p>
+                                <p>Then it will ask you to enter the equation, for example enter <code> 1+2*2/4+round(3.6)</code></p>
+
+                                <p>Response: if success You will get green message  in format
+                                    <code> {result-float, Steps-array, operations-array, functions-array} </code>
+                                    Example : </p>
+                                <P><pre style="background: darkgreen">  [OK] Result [
+                                        -5, ["4*2= 8","8\/1= 8","1 + 2 =3","3 - 8 =-5"],
+                                        {"1":"+","2":"-","3":"*","4":"\/"},
+                                        []] </pre></P>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-warning card-outline">
+                        <a class="d-block w-100" data-toggle="collapse" href="#collapseFive">
+                            <div class="card-header">
+                                <h4 class="card-title w-100">
+                                    iv. TODO
+                                </h4>
+                            </div>
+                        </a>
+
+
+                        <div id="collapseFive" class="collapse show" data-parent="#accordion">
+                            <div class="card-body">
+                                <ul>
+                                    <li>Login API</li>
+                                    <li>API Allow user to Add new function</li>
+                                    <li>get Users Report- (return locations and number)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+{% endblock %}

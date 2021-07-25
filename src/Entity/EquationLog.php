@@ -102,7 +102,7 @@ class EquationLog
      */
     public function __toString()
     {
-        return $this->getEquation();
+        return $this->getEquation()."=". $this->getResult();
     }
 
     public function getResult(): ?float
@@ -117,9 +117,9 @@ class EquationLog
         return $this;
     }
 
-    public function getSteps(): ?string
+    public function getSteps()
     {
-        return $this->steps;
+        return json_decode($this->steps);
     }
 
     public function setSteps(?string $steps): self

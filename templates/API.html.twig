@@ -1,0 +1,187 @@
+{% extends "base.html.twig" %}
+{% block body %}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>APIs Guide</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/Documentation/v1/">Getting Start</a></li>
+                            <li class="breadcrumb-item"><a href="/Documentation/v1/API">API</a></li>
+                            <li class="breadcrumb-item"><a href="/Documentation/v1/CLI">CLI</a></li>
+                            <li class="breadcrumb-item active"><a href="/Documentation/v1/Install">Install</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-12" id="accordion">
+                    <div class="card card-primary card-outline">
+                        <a class="d-block w-100" data-toggle="collapse" href="#collapseOne">
+                            <div class="card-header">
+                                <h4 class="card-title w-100">
+                                    Documentation
+                                </h4>
+                            </div>
+                        </a>
+                        <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                            <div class="card-body">
+                                Use the APIs to do your Calculations or get the reports.
+                                See our documentation below or Download our <a href="/">Postman Collection </a>
+
+                                <p>Our Base URL is: <code>ServerURL + "/rest/v1/" </code></p>
+                                <p> <code> http://143.244.183.45/rest/v1/ </code></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-primary card-outline">
+                        <a class="d-block w-100" data-toggle="collapse" href="#collapseTwo">
+                            <div class="card-header">
+                                <h4 class="card-title w-100">
+                                    i. Calculate Equation (example 1+2*5)
+
+                                </h4>
+                            </div>
+                        </a>
+                        <div id="collapseTwo" class="collapse show" data-parent="#accordion">
+                            <div class="card-body">
+
+                                <p>EndPoint: <code>http://127.0.0.1:8000/rest/v1/calculate </code></p>
+                                <p>Method: <code>POST </code></p>
+
+                                <p>Body: Pass the equation in the body using Key "input: Example:</p>
+                                <P><code>{"input" : "1+2-4*2/1"}</code></p>
+                                <p>Response: The response will be in format
+                                    <code> {result-float, Steps-array, operations-array, functions-array} </code>
+                                    Example : </p>
+                                <div class="col-12"> <pre  >
+                                        [
+                                        -5,
+                                        ["4*2= 8",
+                                         "8\/1= 8",
+                                         "1 + 2 =3",
+                                         "3 - 8 =-5"],
+                                        {"1":"+","2":"-","3":"*","4":"\/"},
+                                        []] </pre>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-primary card-outline">
+                        <a class="d-block w-100" data-toggle="collapse" href="#collapseThree">
+                            <div class="card-header">
+                                <h4 class="card-title w-100">
+                                    ii. Get Last Equations history
+
+                                </h4>
+                            </div>
+                        </a>
+                        <div id="collapseThree" class="collapse show" data-parent="#accordion">
+                            <div class="card-body">
+
+                                <p>EndPoint: <code>http://143.244.183.45/rest/v1/reports/getTopEquations </code> <a
+                                            target="_blank"
+                                            href="http://143.244.183.45/rest/v1/reports/getTopEquations?top=10">Link</a>
+                                </p>
+                                <p>Method: <code>GET </code></p>
+
+                                <p>Body: Pass the Number of equations you want to get using Key "top: Example:</p>
+                                <P><code>{"top" : "10"}</code></p>
+                                <p>Response: The response will be in format
+                                    <code> {equationObjects-array} </code>
+                                    Example : </p>
+                                <pre>
+                                        [
+                                        {
+                                        "id": 8,
+                                        "operation": [.... ],
+                                        "equation": "1+3*2",
+                                        "result": 7,
+                                        "steps": "[\"3*2= 6\",\"1 + 6 =7\"]",
+                                        "createdAt": "21/07/25",
+                                        "updatedAt": "21/07/25",
+                                        "deletedAt": null,
+                                        "deleted": false
+                                        },
+
+                                        ]</pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-warning card-outline">
+                        <a class="d-block w-100" data-toggle="collapse" href="#collapseFour">
+                            <div class="card-header">
+                                <h4 class="card-title w-100">
+                                    iii. Get Operations Summary (Count for each)
+                                </h4>
+                            </div>
+                        </a>
+                        <div id="collapseFour" class="collapse show" data-parent="#accordion">
+                            <div class="card-body">
+                                <p>EndPoint: <code>http://143.244.183.45/rest/v1/reports/operationSummary </code>
+                                    <a target="_blank"
+                                       href="http://143.244.183.45/rest/v1/reports/operationSummary?frequency=week">Link</a>
+                                </p>
+                                <p>Method: <code>GET </code></p>
+
+                                <p>Body: Pass the Number of equations you want to get using Key "frequency: Example:</p>
+                                <P><code>{"frequency" : "week"}</code></p>
+                                <P>it can have 3 values <var> "week"</var> ,  <var> "month"</var>, or <var> "year"</var></P>
+                                <p>Response: The response will be in format
+                                    <code> {summaryArray-array} </code>
+                                    Example : </p>
+                                <pre>
+                                    [
+                                      {
+                                        "count": 7,
+                                        "operation": "+"
+                                        },
+                                        {
+                                        "count": 3,
+                                        "operation": "*"
+                                        },
+                                     ]</pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-warning card-outline">
+                        <a class="d-block w-100" data-toggle="collapse" href="#collapseFive">
+                            <div class="card-header">
+                                <h4 class="card-title w-100">
+                                    iv. TODO
+                                </h4>
+                            </div>
+                        </a>
+
+
+                        <div id="collapseFive" class="collapse show" data-parent="#accordion">
+                            <div class="card-body">
+                                <ul>
+                                    <li>Login API</li>
+                                    <li>API Allow user to Add new function</li>
+                                    <li>get Users Report- (return locations and number)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+{% endblock %}

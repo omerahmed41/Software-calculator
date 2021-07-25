@@ -25,18 +25,19 @@
         </section>
 
             <div class="container-fluid">
-                <h5 class="mb-2">Last Equations</h5>
+                <h5 class="mb-2">Operations Summary </h5>
                 <div class="row">
                     {% set bg = ['success','info','info','warning','danger'] %}
-                    {% for equation in equations %}
+                    {% for operation in operations %}
 
                         <div class="col-md-3 col-sm-6 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-{{ bg[loop.index%3] }}"><i class="ion ion-stats-bars"></i></span>
+                                <span class="info-box-icon bg-{{ bg[loop.index%3] }}"><i class="ion ion-stats-bars"></i>
+                                 {{ operation["count"] }}  </span>
 
                                 <div class="info-box-content">
-                                    <span class="info-box-text">  {{ equation }}</span>
-                                    <span class="info-box-number"> {{ equation.CreatedAt.format('d/m/Y') }}</span>
+                                    <span class="info-box-text">  {{ operation["operation"] }}</span>
+                                    <span class="info-box-number"> </span>
                                 </div>
                                 <!-- /.info-box-content -->
                             </div>
@@ -55,17 +56,24 @@
                 <!-- =========================================================== -->
 
                 <!-- Small Box (Stat card) -->
-                <h5 class="mb-2 mt-4">Operations Summary</h5>
+                <h5 class="mb-2 mt-4">Last Equations</h5>
                 <div class="row">
-                    {% for operation in operations %}
+                    {% for equation in equations %}
 
                     <div class="col-lg-3 col-6">
                         <!-- small card -->
                         <div class="small-box bg-{{ bg[loop.index%5] }}">
                             <div class="inner">
-                                <h3>{{ operation["operation"] }}</h3>
+                                <h6>{{ equation }}  </h6>
+                                Steps:
+                                {% for step in  equation.steps %}
 
-                                <p>{{ operation["count"] }}</p>
+                                <p>{{ step }}</p>
+                                {% endfor%}
+
+{#                                <h3>{{ operation["operation"] }}</h3>#}
+
+{#                                <p>{{ operation["count"] }}</p>#}
                             </div>
                             <div class="icon">
                                 <i class="fas fa-shopping-cart"></i>

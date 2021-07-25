@@ -1,0 +1,122 @@
+{% extends "base.html.twig" %}
+{% block body %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Getting Start Guide</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/Documentation/v1/">Getting Start</a></li>
+              <li class="breadcrumb-item"><a href="/Documentation/v1/API">API</a></li>
+              <li class="breadcrumb-item"><a href="/Documentation/v1/CLI">CLI</a></li>
+              <li class="breadcrumb-item active"><a href="/Documentation/v1/Install">Install</a></li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+
+
+
+
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-12" id="accordion">
+          <div class="card card-primary card-outline">
+            <a class="d-block w-100" data-toggle="collapse" href="#collapseOne">
+              <div class="card-header">
+                <h4 class="card-title w-100">
+                      i. Software-calculator.
+                </h4>
+              </div>
+            </a>
+            <div id="collapseOne" class="collapse show" data-parent="#accordion">
+              <div class="card-body">
+                Advanced Open-Source Software calculator using PHP Symfony (CLI the Rest APIs)- implementing OOP and solid principles to build State-of-the-art software calculator.
+                A calculator for a company that is working on developing a mega operating system for personal computers in order to include it in their next operator system release.
+
+                you can see the source code on
+                <a target="_blank" href = "https://github.com/omerahmed41/Software-calculator.git">github</a>
+                ,see our  <a href ="/">dashboard </a>
+                , or Download our <a href ="/">Postman Collection </a>
+              </div>
+            </div>
+          </div>
+          <div class="card card-primary card-outline">
+            <a class="d-block w-100" data-toggle="collapse" href="#collapseTwo">
+              <div class="card-header">
+                <h4 class="card-title w-100">
+                  ii.  Goals and Features
+                </h4>
+              </div>
+            </a>
+            <div id="collapseTwo" class="collapse show" data-parent="#accordion">
+              <div class="card-body">
+                Here are the goals for the calculator:
+                <ul>
+                  <li> Perform basic calculations (add, subtract, multiple, divide).</li>
+                  <li> Perform square root, cubic root, power, and factorial calculations.</li>
+                  <li> In order to eliminate any potential bugs in the software,
+                    automated tests must be written and run to ensure the integrity of the application.</li>
+                  <li> A report has to be pulled out daily/weekly/monthly basis
+                    showing the operations that have been performed during that time period.</li>
+                </ul>
+
+                  UX:
+                  The calculator will be triggered and interacted:
+                  <ul>
+                    <li>Via The CLI.</li>
+                    <li> via a web API.</li>
+                  </ul>
+
+                  Technologies:
+                  <ul>
+                    <li>PHP Symfony.</li>
+                    <li>Apache2 Server.</li>
+                    <li>Digital Ocean VPS.</li>
+                    <li>MYSQL.</li>
+                    <li>REDIS.</li>
+                    <li>Vue.JS.</li>
+                  </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-warning card-outline">
+            <a class="d-block w-100" data-toggle="collapse" href="#collapseFive">
+              <div class="card-header">
+                <h4 class="card-title w-100">
+                 iii. TODO
+                </h4>
+              </div>
+            </a>
+            <div id="collapseFive" class="collapse show" data-parent="#accordion">
+              <div class="card-body">
+                <ul>
+                  <li>Allow users to Add their own Functions.</li>
+                  <li>Access command from Browser.</li>
+                  <li>Cache Reports on Redis</li>
+                  <li>Use Events dispatcher.</li>
+                  <li>Add login and Make Dashboard access limited.</li>
+                  <li>Add API Documentation using Swagger.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+{% endblock %}

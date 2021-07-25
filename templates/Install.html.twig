@@ -1,0 +1,171 @@
+{% extends "base.html.twig" %}
+{% block body %}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Install Guide</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/Documentation/v1/">Getting Start</a></li>
+                            <li class="breadcrumb-item"><a href="/Documentation/v1/API">API</a></li>
+                            <li class="breadcrumb-item"><a href="/Documentation/v1/CLI">CLI</a></li>
+                            <li class="breadcrumb-item active"><a href="/Documentation/v1/Install">Install</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-12" id="accordion">
+                    <div class="card card-primary card-outline">
+                        <a class="d-block w-100" data-toggle="collapse" href="#collapseOne">
+                            <div class="card-header">
+                                <h4 class="card-title w-100">
+                                    3 Simple Steps
+                                </h4>
+                            </div>
+                        </a>
+                        <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                            <div class="card-body">
+                                Get the App up and running in 3 simple steps
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-primary card-outline">
+                        <a class="d-block w-100" data-toggle="collapse" href="#collapseTwo">
+                            <div class="card-header">
+                                <h4 class="card-title w-100">
+                                    i. Prepare the environment
+
+                                </h4>
+                            </div>
+                        </a>
+                        <div id="collapseTwo" class="collapse show" data-parent="#accordion">
+                            <div class="card-body">
+                                <ul>
+                                    <li>1. Install PHP/MySQL</li>
+                                    <p><a href="https://www.php.net/manual/en/install.php">
+                                            See the guide</a> to install and run PHP/MySQL based on your operation
+                                        system</p>
+                                    <li>2. Install composer</li>
+                                    <P> See the guide on <a href="https://getcomposer.org/doc/00-intro.md">
+                                            getcomposer </a>
+                                    </P>
+                                    <li>3. Install git</li>
+                                    <P> See the guide on <a
+                                                href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">
+                                            git-scm </a>
+                                    </P>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-primary card-outline">
+                        <a class="d-block w-100" data-toggle="collapse" href="#collapseThree">
+                            <div class="card-header">
+                                <h4 class="card-title w-100">
+                                    ii. Install Symfony and get the project
+
+                                </h4>
+                            </div>
+                        </a>
+                        <div id="collapseThree" class="collapse show" data-parent="#accordion">
+                            <div class="card-body">
+                                <ul>
+                                    <li>1.install symfony cli</li>
+                                    <p> on linux Use command <code>wget https://get.symfony.com/cli/installer -O - |
+                                            bash </code></p>
+                                    <p>For other OS systems see <a href="https://symfony.com/download">symfony
+                                            download</a>
+
+                                    </p>
+                                    <li>2. Use git clone to get the project</li>
+                                    <P> Use git clone to get our software calculator using url <a
+                                                href="https://github.com/omerahmed41/Software-calculator.git">
+                                            https://github.com/omerahmed41/Software-calculator.git </a>
+                                    </P>
+                                    <li>3.Composer install</li>
+                                    <P> In command line head to project dir and type
+                                        <code>composer install</code></a>
+                                    </P>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-warning card-outline">
+                        <a class="d-block w-100" data-toggle="collapse" href="#collapseFour">
+                            <div class="card-header">
+                                <h4 class="card-title w-100">
+                                    iii. Configure MySql and run
+                                </h4>
+                            </div>
+                        </a>
+                        <div id="collapseFour" class="collapse show" data-parent="#accordion">
+                            <div class="card-body">
+                                <ul>
+                                    <li>1. Configure the symfony env</li>
+                                    <p>Configure the symfony env on .env file and change the <var>DATABASE_URL</var> to
+                                        your Database user
+                                    </p>
+                                    <p><code>DATABASE_URL="mysql://root:@localhost:3306/symfony"</code></p>
+
+                                    <li>2. Create Database using CLi</li>
+                                    <P> Create database and make sure our setup is working using
+                                        <code>php bin/console doctrine:database:create</code>
+                                    </P>
+
+                                    <li>3. Doctrine:migrations</li>
+                                    <P> Do doctrine:migrations using the CLI type
+                                        <code>php bin/console doctrine:migrations:migrate</code></a>
+                                    </P>
+
+                                    <li>4. Server start</li>
+                                    <P> start the server using the CLI type:
+                                        <code> symfony server:start </code></a>
+                                    </P>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-warning card-outline">
+                        <a class="d-block w-100" data-toggle="collapse" href="#collapseFive">
+                            <div class="card-header">
+                                <h4 class="card-title w-100">
+                                    iv. TODO
+                                </h4>
+                            </div>
+                        </a>
+
+
+                        <div id="collapseFive" class="collapse show" data-parent="#accordion">
+                            <div class="card-body">
+                                <ul>
+                                    <li>Use Docker to configure the env</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+{% endblock %}
