@@ -30,14 +30,14 @@ class CalculatorHelper
 
     function handleInput($string ): array
     {
-
-        $this->logger->print_message("Your input is: $string \n");
+        $string = preg_replace("/\s+/", "", $string);
+        $this->logger->print_message("Your input is: $string");
 
         $parsedInput = $this->validateInput($string);
         if (!$parsedInput['state']) {
             // todo: throw error to handle errors one time
-            $this->logger->print_message("Wrong input \n", 'error');
-            return $this->returnResponse(false, "Wrong input \n");
+            $this->logger->print_message("Wrong input", 'error');
+            return $this->returnResponse(false, "Wrong input");
         }
 
 
