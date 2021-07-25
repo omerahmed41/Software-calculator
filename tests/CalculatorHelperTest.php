@@ -13,20 +13,10 @@ use Symfony\Component\Console\Tester\CommandTester;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 class CalculatorHelperTest extends WebTestCase
 {
-
+// todo: add unit test cases for CalculatorHelperTest
+// todo: add functional test cases for CalculatorHelperTest
     public function testIsRightFormat()
     {
-        self::bootKernel();
-        $container = self::$kernel->getContainer();
-        $doctrine = self::$container->get('doctrine');
-        $em = $doctrine->getManager();
-        $logger = $container->get('app.logger');
-
-        $nunOperations = [1,2];
-        $operations = ['+'];
-//        $cal = new CalculatorHelper();
-//        $cal->startCLILogger();
-//        $result = $cal->isRightFormat($nunOperations,$operations);
 
         $this->assertEquals(false, false);
 

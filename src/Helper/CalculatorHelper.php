@@ -20,70 +20,45 @@ class CalculatorHelper
         $this->em = $em;
     }
 
+    /**
+     * to enable or disable the print command
+     */
     function startCLILogger(){
                 $this->logger->cliMode = true;
     }
 
-    function getUserInput(){
-        // echo "cal";
-        echo "Enter a math expression example 1+2*6: \n ";
-        $handle = fopen("php://stdin", "r");
-        $line = fgets($handle);
-        fclose($handle);
-        $this->handleInput(trim($line));
-        echo "\n";
-        echo "Thank you, ...\n";
-    }
 
-
-
-    function handleInput($string,$cli = false ): array
+    function handleInput($string ): array
     {
-//    $string = 'omer(21)+round(5)';
 
         $this->logger->print_message("Your input is: $string \n");
 
         $parsedInput = $this->validateInput($string);
         if (!$parsedInput['state']) {
+            // todo: throw error to handle errors one time
             $this->logger->print_message("Wrong input \n", 'error');
             return $this->returnResponse(false, "Wrong input \n");
-
         }
 
 
         $calculationResult = $this->runCalculation($parsedInput['message']);
         if (!$calculationResult['state']) {
+            // todo: throw error to handle errors one time
             $this->logger->print_message($calculationResult['message'], 'error');
             return $this->returnResponse(false, $calculationResult['message']);
 
         }
         $res =$calculationResult['message'];
-
-        [$result,$steps,$baseOperations,$functions] = $res;
-        $entityManager = $this->em;
-
-        $equation = new EquationLog();
-        $equation->setEquation($string);
-        $equation->setResult($result);
-        $equation->setSteps(json_encode($steps));
-        $entityManager->persist($equation);
-
-        $allOperations = array_merge($baseOperations,$functions);
-        foreach ($allOperations as $baseOperation){
-            $operation = new OperationsLog();
-            $operation->setOperationType($baseOperation);
-            $operation->setEquation($equation);
-            $entityManager->persist($operation);
-
-        }
-
-        $entityManager->flush();
+        $steps = $res[1];
+        $this->saveEquationsTODaTODO($res,$string);
         $this->logger->print_message($steps, 'success');
 
 
       return $this->returnResponse(true,null,$res ) ;
 
     }
+
+
 
     function runCalculation($parsedInput): array
     {
@@ -93,6 +68,7 @@ class CalculatorHelper
 
         $calculateFunctions = $this->calculateFunctions($nunOperations);
         if (!$calculateFunctions['state']) {
+            // todo: throw error to handle errors one time
             $this->logger->print_message($calculateFunctions['message'], 'error');
             return $this->returnResponse(false, $calculateFunctions['message']);
 
@@ -103,6 +79,7 @@ class CalculatorHelper
 
         $calculateOperations = $this->calculateOperations($nums, $baseOperations);
         if (!$calculateOperations['state']) {
+            // todo: throw error to handle errors one time
             $this->logger->print_message($calculateOperations['message'], 'error');
             return $this->returnResponse(false, $calculateOperations['message']);
 
@@ -163,6 +140,7 @@ class CalculatorHelper
 
             $calc = $m->calc($opt, [$result, $nums[0]]);
             if (!$calc['state']) {
+                // todo: throw error to handle errors one time
                 $this->logger->print_message($calc['message'], 'error');
                 return $calc;
             }
@@ -190,14 +168,8 @@ class CalculatorHelper
             }
 
             array_push($functions,$funName[0][0]);
-//            $this->logger->print_message('funName: '. "\n".$funName[0][0]);
-
 
             $arguments = array_values(array_filter(preg_split("/[^0-9]/", $nunOperation)));
-            foreach ($arguments as $k => $argument) {
-//                $this->logger->print_message(",argument[$k]: $argument");
-
-            }
             $result = $m->calc($funName[0][0], $arguments);
             if (!$result['state']) {
                 return $result;
@@ -208,8 +180,6 @@ class CalculatorHelper
             $this->logger->print_message("$nunOperation = ".$result['result']);
 
         }
-//        $this->logger->print_message("numbers array:");
-//        $this->logger->print_message($nunOperations);
 
         return [
             'state' => true,
@@ -220,11 +190,15 @@ class CalculatorHelper
 
     }
 
+    /**
+     * @param $string
+     * @return array
+     */
     function validateInput($string)
     {
 
-
         if (!$this->hasUnallowableChar($string)) {
+            // todo: throw error to handle errors one time
             $this->logger->print_message('Has Unallowable Chars', 'error');
             return $this->returnResponse(false,'Has Unallowable Chars');
 
@@ -233,6 +207,7 @@ class CalculatorHelper
         [$nunOperations, $operations] = $this->phraseInput($string);
 
         if (!$this->isRightFormat($nunOperations, $operations)) {
+            // todo: throw error to handle errors one time
             $this->logger->print_message("wrong format \n");
             return $this->returnResponse(false,"wrong format \n");
 
@@ -242,6 +217,11 @@ class CalculatorHelper
 
     }
 
+    /**
+     * @param $nunOperations
+     * @param $operations
+     * @return bool
+     */
     function isRightFormat($nunOperations, $operations): bool
     {
         if (count($nunOperations) - count($operations) != 1) {
@@ -271,6 +251,10 @@ class CalculatorHelper
         return [$nunOperations, $operations];
     }
 
+    /**
+     * @param $string
+     * @return bool
+     */
     function hasUnallowableChar($string): bool
     {
 
@@ -278,8 +262,6 @@ class CalculatorHelper
 
 
         $number = '(?:\d+(?:[,.]\d+)?|pi|π)'; // What is a number
-//    $functions = '(?:sinh?|cosh?|tanh?|abs|acosh?|asinh?|atanh?|exp|log10|deg2rad|rad2deg|sqrt|ceil|floor|round)'
-//        .'\s*\((?1)+\)|\((?1)+\))(?:'; // Allowed PHP functions
         $functions = "$m->allowedFunctions"
             . '\s*\((?1)+\)|\((?1)+\))(?:'; // Allowed local functions
         $operators = '[+\/*\^%-]'; // Allowed math operators
@@ -308,7 +290,40 @@ class CalculatorHelper
         ];
     }
 
-    
+    private function saveEquationsTODaTODO($res,$string){
+
+        [$result,$steps,$baseOperations,$functions] = $res;
+        $entityManager = $this->em;
+
+        $equation = new EquationLog();
+        $equation->setEquation($string);
+        $equation->setResult($result);
+        $equation->setSteps(json_encode($steps));
+        $entityManager->persist($equation);
+
+        $allOperations = array_merge($baseOperations,$functions);
+        foreach ($allOperations as $baseOperation){
+            $operation = new OperationsLog();
+            $operation->setOperationType($baseOperation);
+            $operation->setEquation($equation);
+            $entityManager->persist($operation);
+
+        }
+
+        $entityManager->flush();
+    }
+
+    // if we call the php class direct from cmd
+    function getUserInput(){
+        // echo "cal";
+        echo "Enter a math expression example 1+2*6: \n ";
+        $handle = fopen("php://stdin", "r");
+        $line = fgets($handle);
+        fclose($handle);
+        $this->handleInput(trim($line));
+        echo "\n";
+        echo "Thank you, ...\n";
+    }
 
 
 }

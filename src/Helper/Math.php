@@ -57,9 +57,32 @@ class  Math
 
     ];
 
-    public array $functionsMatrix = [
-        'omer' => 'return $2*x + 2*$y;',
-    ];
+
+    public function getallowedFunctions()
+    {
+        // todo: allow use to enter function names saved in database
+    }
+
+    public function getoperationsMatrix()
+    {
+        // todo : array_merge(operationsMatrix,$functionsMatrix )
+    }
+
+
+    public function addgetfunctionsMatrix()
+    {
+        //todo: save new function to Database
+    }
+
+
+    public function getfunctionsMatrix()
+    {
+        return [
+            // todo : get operations saved in the database and cached on REDIs
+
+            'omer' => 'return $2*x + 2*$y;',
+        ];
+    }
 
     /**
      * @param string $opt
@@ -68,7 +91,7 @@ class  Math
      */
     public function calc(string $opt, $augments)
     {
-        if (!array_key_exists($opt,$this->operationsMatrix)){
+        if (!array_key_exists($opt, $this->operationsMatrix)) {
             return [
                 'state' => false,
                 'message' => "$opt not in our Database"
