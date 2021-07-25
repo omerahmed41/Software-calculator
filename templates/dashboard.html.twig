@@ -1,0 +1,110 @@
+{% extends "base.html.twig" %}
+{% block body %}
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item active"> <h1>Dashboard Reports</h1></li>
+                            <li>
+                                <a href="/Documentation/v1/" class="nav-link">See the Documentation</a></li>
+                        </ol>
+
+
+
+
+
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="?frequency=week">Weekly</a></li>
+                            <li class="breadcrumb-item active"><a href="?frequency=month">Monthly</a></li>
+                            <li class="breadcrumb-item active"><a href="?frequency=year">Yearly</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+            <div class="container-fluid">
+                <h5 class="mb-2">Operations Summary </h5>
+                <div class="row">
+                    {% set bg = ['success','info','info','warning','danger'] %}
+                    {% for operation in operations %}
+
+                        <div class="col-md-3 col-sm-6 col-12">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-{{ bg[loop.index%3] }}"><i class="ion ion-stats-bars"></i>
+                                 {{ operation["count"] }}  </span>
+
+                                <div class="info-box-content">
+                                    <span class="info-box-text">  {{ operation["operation"] }}</span>
+                                    <span class="info-box-number"> </span>
+                                </div>
+                                <!-- /.info-box-content -->
+                            </div>
+                            <!-- /.info-box -->
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+                <!-- /.row -->
+
+                <!-- =========================================================== -->
+
+
+
+                <!-- =========================================================== -->
+
+                <!-- Small Box (Stat card) -->
+                <h5 class="mb-2 mt-4">Last Equations</h5>
+                <div class="row">
+                    {% for equation in equations %}
+
+                    <div class="col-lg-3 col-6">
+                        <!-- small card -->
+                        <div class="small-box bg-{{ bg[loop.index%5] }}">
+                            <div class="inner">
+                                <h6>{{ equation }}  </h6>
+                                Steps:
+                                {% for step in  equation.steps %}
+
+                                <p>{{ step }}</p>
+                                {% endfor%}
+
+{#                                <h3>{{ operation["operation"] }}</h3>#}
+
+{#                                <p>{{ operation["count"] }}</p>#}
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+{#                            <a href="#" class="small-box-footer">#}
+{#                                More info <i class="fas fa-arrow-circle-right"></i>#}
+{#                            </a>#}
+                        </div>
+                    </div>
+                    <!-- ./col -->
+
+                {% endfor%}
+                </div>
+
+                <!-- /.row -->
+
+
+            </div>
+            <!-- /.content-wrapper -->
+
+    </div>
+</div>
+</body>
+</html>
+{% endblock %}
