@@ -80,7 +80,8 @@ class CalculatorHelper
         $entityManager->flush();
         $this->logger->print_message($steps, 'success');
 
-      return  $res;
+
+      return $this->returnResponse(true,null,$res ) ;
 
     }
 
@@ -126,7 +127,7 @@ class CalculatorHelper
             if ($opt == '*' || $opt == "/") {
                 $key+=1;
                 $equation = $nums[$key - 1]. $opt.  $nums[$key] ."= ";
-                $this->logger->print_message($equation);
+//                $this->logger->print_message($equation);
 
                 $calc = $m->calc($opt, [$nums[$key - 1], $nums[$key]]);
                 if (!$calc['state']) {
@@ -134,7 +135,7 @@ class CalculatorHelper
                     return $calc;
                 }
                 $result = $calc['result'];
-                $this->logger->print_message($result ."\n");
+//                $this->logger->print_message($result ."\n");
 
                 // array_shift($nums);
                 unset($operations[$key-1]);
@@ -142,6 +143,8 @@ class CalculatorHelper
                 $nums[$key] = $result;
                 unset($nums[$key - 1]);
                 array_push($steps, $equation.$result);
+                $this->logger->print_message($equation.$result);
+
 //        array_shift($nums);
 
             }
@@ -156,7 +159,7 @@ class CalculatorHelper
         foreach ($operations as $key => $opt) {
             $equation = "$result $opt $nums[0] =";
 
-            $this->logger->print_message($equation);
+//            $this->logger->print_message($equation);
 
             $calc = $m->calc($opt, [$result, $nums[0]]);
             if (!$calc['state']) {
@@ -164,11 +167,13 @@ class CalculatorHelper
                 return $calc;
             }
             $result = $calc['result'];
-            $this->logger->print_message($result. "\n");
+//            $this->logger->print_message($result. "\n");
 
             // array_shift($nums);
             array_shift($nums);
             array_push($steps, $equation.$result);
+            $this->logger->print_message($equation.$result);
+
         }
         return $this->returnResponse(true, $steps, $result);
     }
@@ -185,12 +190,12 @@ class CalculatorHelper
             }
 
             array_push($functions,$funName[0][0]);
-            $this->logger->print_message('funName: '. "\n".$funName[0][0]);
+//            $this->logger->print_message('funName: '. "\n".$funName[0][0]);
 
 
             $arguments = array_values(array_filter(preg_split("/[^0-9]/", $nunOperation)));
             foreach ($arguments as $k => $argument) {
-                $this->logger->print_message(",argument[$k]: $argument");
+//                $this->logger->print_message(",argument[$k]: $argument");
 
             }
             $result = $m->calc($funName[0][0], $arguments);
@@ -200,10 +205,11 @@ class CalculatorHelper
             $nunOperations[$key] = $result['result'];
 
             array_push($steps,"$nunOperation = ".$result['result']);
+            $this->logger->print_message("$nunOperation = ".$result['result']);
 
         }
-        $this->logger->print_message("numbers array:");
-        $this->logger->print_message($nunOperations);
+//        $this->logger->print_message("numbers array:");
+//        $this->logger->print_message($nunOperations);
 
         return [
             'state' => true,
@@ -216,6 +222,7 @@ class CalculatorHelper
 
     function validateInput($string)
     {
+
 
         if (!$this->hasUnallowableChar($string)) {
             $this->logger->print_message('Has Unallowable Chars', 'error');

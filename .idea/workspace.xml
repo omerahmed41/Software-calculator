@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff857782-e8c5-4fa6-8f5c-ac87cd31c196" name="Default Changelist" comment="- Add URL tp download Postman collection&#10;- Added the postMam collection">
+      <change afterPath="$PROJECT_DIR$/src/Controller/MainController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/DocumentationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DocumentationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReportController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Helper/CalculatorHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helper/CalculatorHelper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CLI.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CLI.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/dashboard.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,7 +176,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Controller" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -183,15 +188,15 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\software calculater\Software-calculator\templates" />
       <recent name="C:\software calculater\Software-calculator\src\Controller" />
+      <recent name="C:\software calculater\Software-calculator\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\software calculater\Software-calculator\public" />
       <recent name="C:\software calculater\Software-calculator\templates" />
       <recent name="C:\software calculater\Software-calculator" />
       <recent name="C:\software calculater\Software-calculator\src\templates" />
       <recent name="C:\software calculater\Software-calculator\resources\views" />
-      <recent name="C:\software calculater\Software-calculator\src\templates\report" />
     </key>
   </component>
   <component name="RunManager" selected="PHPUnit.MathTest.testAdd">
@@ -221,7 +226,7 @@
       <workItem from="1626945352112" duration="7377000" />
       <workItem from="1626955124386" duration="7944000" />
       <workItem from="1627021452393" duration="621000" />
-      <workItem from="1627058597437" duration="75953000" />
+      <workItem from="1627058597437" duration="83807000" />
     </task>
     <task id="LOCAL-00001" summary="- project init &#10;- configures routes and annotations&#10;- configured logs &#10;- Created new Entities &#10;- create migrations &#10;- configured SQL database">
       <created>1627059204262</created>
@@ -377,7 +382,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627224456496</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="- Add URL tp download Postman collection&#10;- Added the postMam collection">
+      <created>1627225067564</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1627225067564</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

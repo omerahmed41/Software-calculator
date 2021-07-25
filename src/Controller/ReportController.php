@@ -20,7 +20,7 @@ class ReportController extends BaseController
 
 
     /**
-     * @Route ("/", methods={"GET"})
+     * @Route ("/dashboard", methods={"GET"})
      * @param Request $request
      */
     function index(Request $request)
@@ -37,7 +37,7 @@ class ReportController extends BaseController
 //        return new JsonResponse($result);
 //        $serialized = $this->serializer->serialize($result, "json");
 
-        return $this->render("/index.html.twig", [
+        return $this->render("/dashboard.html.twig", [
             'equations' => $equations,
             'operations' => $operations,
         ]);
