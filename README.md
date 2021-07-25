@@ -36,6 +36,7 @@ Get the App up and running in 3 simple steps
    See the guide on git-scm
 `https://git-scm.com/book/en/v2/Getting-Started-Installing-Git`
 
+
 ## ii. Install Symfony and get the project
 
 ###1.install symfony cli
@@ -57,7 +58,9 @@ In command line head to project dir and type
 `composer install`
 
 
+
 ##iii. Configure MySql and run
+
 
 ###1. Configure the symfony env
 
@@ -68,18 +71,23 @@ DATABASE_URL="mysql://root:@localhost:3306/symfony"
 
 
 ###2. Create Database using CLi
+
    Create database and make sure our setup is working using
    `php bin/console doctrine:database:create`
 
 
 ###3. Doctrine:migrations
+
    Do doctrine:migrations using the CLI type 
   ` php bin/console doctrine:migrations:migrate`
 
 
 ###4. Server start
+
 Start the server using the CLI type:
 `symfony server:start`
 
+
 iv. TODO
+
 Use Docker to configure the env
