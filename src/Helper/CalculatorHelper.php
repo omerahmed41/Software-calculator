@@ -59,11 +59,13 @@ class CalculatorHelper
         }
         $res =$calculationResult['message'];
 
-        [$result,$baseOperations,$functions] = $res;
+        [$result,$steps,$baseOperations,$functions] = $res;
         $entityManager = $this->em;
 
         $equation = new EquationLog();
         $equation->setEquation($string);
+        $equation->setResult($result);
+        $equation->setSteps(json_encode($steps));
         $entityManager->persist($equation);
 
         $allOperations = array_merge($baseOperations,$functions);
@@ -104,7 +106,8 @@ class CalculatorHelper
 
         }
         $result = $calculateOperations['result'];
-        $res = [$result,$baseOperations,$functions];
+        $steps = array_merge($calculateFunctions['message'], $calculateOperations['message']);
+        $res = [$result,$steps,$baseOperations,$functions];
         $this->logger->print_message("Result: $result", 'success');
         return  $this->returnResponse(true, $res);
     }
@@ -116,12 +119,13 @@ class CalculatorHelper
         $operations = array_values($operations);
         $nums = array_values($nums);
 
+        $steps = [];
         // do * and / first
         foreach ($operations as $key => $opt) {
             if ($opt == '*' || $opt == "/") {
                 $key+=1;
-
-                $this->logger->print_message($nums[$key - 1]. $opt.  $nums[$key] ."= ");
+                $equation = $nums[$key - 1]. $opt.  $nums[$key] ."= ";
+                $this->logger->print_message($equation);
 
                 $calc = $m->calc($opt, [$nums[$key - 1], $nums[$key]]);
                 if (!$calc['state']) {
@@ -136,7 +140,7 @@ class CalculatorHelper
 
                 $nums[$key] = $result;
                 unset($nums[$key - 1]);
-
+                array_push($steps, $equation.$result);
 //        array_shift($nums);
 
             }
@@ -149,7 +153,9 @@ class CalculatorHelper
         $result = $nums[0];
         array_shift($nums);
         foreach ($operations as $key => $opt) {
-            $this->logger->print_message("$result $opt $nums[0] =");
+            $equation = "$result $opt $nums[0] =";
+
+            $this->logger->print_message($equation);
 
             $calc = $m->calc($opt, [$result, $nums[0]]);
             if (!$calc['state']) {
@@ -161,13 +167,14 @@ class CalculatorHelper
 
             // array_shift($nums);
             array_shift($nums);
-
+            array_push($steps, $equation.$result);
         }
-        return $this->returnResponse(true, null, $result);
+        return $this->returnResponse(true, $steps, $result);
     }
 
     function calculateFunctions($nunOperations): array
     {
+        $steps = [];
         $m = new Math;
         $functions = [];
         foreach ($nunOperations as $key => $nunOperation) {
@@ -191,6 +198,8 @@ class CalculatorHelper
             }
             $nunOperations[$key] = $result['result'];
 
+            array_push($steps,"$nunOperation = ".$result['result']);
+
         }
         $this->logger->print_message("numbers array:");
         $this->logger->print_message($nunOperations);
@@ -199,6 +208,7 @@ class CalculatorHelper
             'state' => true,
             'result' => $nunOperations,
             'functions' => $functions,
+            'message' => $steps,
         ];
 
     }

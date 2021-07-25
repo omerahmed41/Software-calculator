@@ -15,8 +15,9 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">APIs Docs</li>
+                            <li class="breadcrumb-item"><a href="?frequency=week">Weekly</a></li>
+                            <li class="breadcrumb-item active"><a href="?frequency=month">Monthly</a></li>
+                            <li class="breadcrumb-item active"><a href="?frequency=year">Yearly</a></li>
                         </ol>
                     </div>
                 </div>
@@ -34,7 +35,7 @@
                                 <span class="info-box-icon bg-{{ bg[loop.index%3] }}"><i class="ion ion-stats-bars"></i></span>
 
                                 <div class="info-box-content">
-                                    <span class="info-box-text"> equation: {{ equation }}</span>
+                                    <span class="info-box-text">  {{ equation }}</span>
                                     <span class="info-box-number"> {{ equation.CreatedAt.format('d/m/Y') }}</span>
                                 </div>
                                 <!-- /.info-box-content -->
@@ -62,9 +63,9 @@
                         <!-- small card -->
                         <div class="small-box bg-{{ bg[loop.index%5] }}">
                             <div class="inner">
-                                <h3>{{ operation["count"] }}</h3>
+                                <h3>{{ operation["operation"] }}</h3>
 
-                                <p>{{ operation["operation"] }}</p>
+                                <p>{{ operation["count"] }}</p>
                             </div>
                             <div class="icon">
                                 <i class="fas fa-shopping-cart"></i>

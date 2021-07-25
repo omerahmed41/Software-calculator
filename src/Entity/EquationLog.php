@@ -35,6 +35,16 @@ class EquationLog
      */
     private $equation;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $result;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $steps;
+
     public function __construct()
     {
         $this->operation = new ArrayCollection();
@@ -93,6 +103,30 @@ class EquationLog
     public function __toString()
     {
         return $this->getEquation();
+    }
+
+    public function getResult(): ?float
+    {
+        return $this->result;
+    }
+
+    public function setResult(?float $result): self
+    {
+        $this->result = $result;
+
+        return $this;
+    }
+
+    public function getSteps(): ?string
+    {
+        return $this->steps;
+    }
+
+    public function setSteps(?string $steps): self
+    {
+        $this->steps = $steps;
+
+        return $this;
     }
 
 }
