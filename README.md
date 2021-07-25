@@ -20,44 +20,62 @@ been performed during that time period.
 
 ## install and Setup
 Get the App up and running in 3 simple steps
+
 ##i. Prepare the environment
+
 ###1. Install PHP/MySQL
+
    See the guide to install and run PHP/MySQL based on your operation system
 `https://www.php.net/manual/en/install.php`
+
 ###2. Install composer
    See the guide on getcomposer
 `https://getcomposer.org/doc/00-intro.md`
+
 ### 3. Install git
    See the guide on git-scm
 `https://git-scm.com/book/en/v2/Getting-Started-Installing-Git`
+
 ## ii. Install Symfony and get the project
+
 ###1.install symfony cli
 on linux Use command: 
+
 `wget https://get.symfony.com/cli/installer -O - | bash`
 
 For other OS systems see symfony download
 `https://symfony.com/download`
+
+
 ###2. Use git clone to get the project
    Use git clone to get our software calculator using url https://github.com/omerahmed41/Software-calculator.git
 
+
 ###3.Composer install
 In command line head to project dir and type 
+
 `composer install`
 
+
 ##iii. Configure MySql and run
+
 ###1. Configure the symfony env
+
    Configure the symfony env on .env file and 
    change the `DATABASE_URL` to your Database user
 
 DATABASE_URL="mysql://root:@localhost:3306/symfony"
 
+
 ###2. Create Database using CLi
    Create database and make sure our setup is working using
    `php bin/console doctrine:database:create`
 
+
 ###3. Doctrine:migrations
    Do doctrine:migrations using the CLI type 
   ` php bin/console doctrine:migrations:migrate`
+
 
 ###4. Server start
 Start the server using the CLI type:
