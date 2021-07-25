@@ -68,7 +68,7 @@ class DocumentationController  extends BaseController
      **/
     public function downloadAction(){
         $projectRoot = $this->appKernel->getProjectDir();
-        $file = new File($projectRoot.'\src\downloads\Software_calculater.postman_collection.json');
+        $file = new File($projectRoot.'/src/downloads/Software_calculater.postman_collection.json');
 
         return $this->file($file);
         return $response;
