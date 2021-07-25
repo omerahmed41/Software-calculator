@@ -27,7 +27,7 @@
         <p>  {{step}}.</p>
       {% endfor %}
         <p>result:  {{result[0]}}.</p>
-        {% elseif message %}
+        {% elseif message and finput %}
         {{ message }}
     {% endif %}
 <p><span>Enter the Equation then press <kbd>Enter</kbd> </span></p>
