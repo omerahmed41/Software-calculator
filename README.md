@@ -3,7 +3,7 @@
 State-of-the-art software calculator.  developing a calculator for a company that is working on developing a mega operating system for personal computers in order to
 include it in their next operator system release.
 
-See the Project running on http://143.244.183.45
+See the Project running on http://www.calcuc.com
 ## Goals and Features
 Here are the  goals for the calculator:
 1. Perform basic calculations (add, subtract, multiple, divide).
