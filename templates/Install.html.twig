@@ -58,6 +58,13 @@
                                     <p><a href="https://www.php.net/manual/en/install.php">
                                             See the guide</a> to install and run PHP/MySQL based on your operation
                                         system</p>
+                                    <p>To configure mysql on your linux</p>
+                                    <p>You need to check if user - root is having auth_socket plugin then run below command:</p>
+                                    <p>mysql> SELECT User, Host, authentication_string,plugin FROM mysql.user;</p>
+                                    <p> mysql> UPDATE user SET plugin='mysql_native_password' WHERE User='root';</p>
+                                    <p>mysql> FLUSH PRIVILEGES;</p>
+                                      <p>mysql> exit; </p>
+
                                     <li>2. Install composer</li>
                                     <P> See the guide on <a href="https://getcomposer.org/doc/00-intro.md">
                                             getcomposer </a>

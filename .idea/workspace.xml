@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff857782-e8c5-4fa6-8f5c-ac87cd31c196" name="Default Changelist" comment="- Code Refactoring.">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Helper/CalculatorHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helper/CalculatorHelper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Install.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Install.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,6 +224,7 @@
       <workItem from="1627021452393" duration="621000" />
       <workItem from="1627058597437" duration="88598000" />
       <workItem from="1627242844409" duration="538000" />
+      <workItem from="1627397065074" duration="334000" />
     </task>
     <task id="LOCAL-00001" summary="- project init &#10;- configures routes and annotations&#10;- configured logs &#10;- Created new Entities &#10;- create migrations &#10;- configured SQL database">
       <created>1627059204262</created>

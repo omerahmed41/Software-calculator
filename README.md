@@ -37,6 +37,17 @@ Get the App up and running in 3 simple steps
    See the guide to install and run PHP/MySQL based on your operation system
 `https://www.php.net/manual/en/install.php`
 
+#### To configure mysql on your linux 
+
+   Check if root is having auth_socket plugin then run below command:
+
+   mysql> SELECT User, Host, authentication_string,plugin  FROM mysql.user;
+
+   mysql> UPDATE user SET plugin='mysql_native_password' WHERE User='root';
+
+   mysql> FLUSH PRIVILEGES;
+
+   mysql> exit;
 ### 2. Install composer
    See the guide on getcomposer
 `https://getcomposer.org/doc/00-intro.md`
